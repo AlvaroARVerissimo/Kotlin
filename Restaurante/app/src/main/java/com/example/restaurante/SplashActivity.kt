@@ -7,16 +7,22 @@ import android.os.Handler
 import android.os.Looper
 
 class SplashActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+ override fun onCreate(savedInstanceState: Bundle?) {
+    // Chama o método onCreate da superclasse
+    super.onCreate(savedInstanceState)
+    // Define o conteúdo da view para a ActivitySplash
+    setContentView(R.layout.activity_splash)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val i = intent
-            val j = Intent(this,PedidoActivity::class.java)
-            j.putExtras(i)
-            startActivity(j)
-        },2000)
-
-    }
+    // Cria um Handler associado ao Looper principal (UI thread)
+    Handler(Looper.getMainLooper()).postDelayed({
+        // Recupera a Intent atual
+        val i = intent
+        // Cria uma nova Intent para a PedidoActivity
+        val j = Intent(this,PedidoActivity::class.java)
+        // Copia todos os extras da Intent atual para a nova Intent
+        j.putExtras(i)
+        // Inicia a PedidoActivity
+        startActivity(j)
+    },2000) // Atraso de 2 segundos (2000 milissegundos)
+}
 }
